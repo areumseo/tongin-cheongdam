@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>통인익스프레스 강남청담점</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --orange: #F26522;
+      --dark: #1a1a1a;
+      --gray: #f5f5f5;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      color: var(--text);
+    }
+
+    /* ── 네비게이션 ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 100;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── 히어로 ── */
+    #hero {
+      background: var(--orange);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 60px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #fff;
+      color: var(--orange);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.9; }
+
+    .hero-image {
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* ── 공통 섹션 ── */
+    section { padding: 80px 5%; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── 서비스 ── */
+    #services { background: var(--gray); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    .card-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--dark);
+    }
+
+    .card p { color: #555; font-size: 0.95rem; line-height: 1.7; }
+
+    /* ── 신뢰 ── */
+    #about { background: #fff; }
+
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .trust-text { flex: 1; }
+
+    .trust-text h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .trust-text p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat .num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+
+    .stat .label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.2rem;
+    }
+
+    /* ── 연락처 ── */
+    #contact { background: var(--gray); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--dark);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover { color: var(--orange); }
+
+    .contact-item .icon { font-size: 1.3rem; }
+
+    form { display: flex; flex-direction: column; gap: 1rem; }
+
+    form input,
+    form textarea,
+    form select {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      width: 100%;
+      background: #fff;
+    }
+
+    form textarea { height: 120px; resize: vertical; }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+
+    .btn-submit {
+      background: var(--orange);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-submit:hover { opacity: 0.9; }
+
+    /* ── 푸터 ── */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.85rem;
+    }
+
+    /* ── 반응형 ── */
+    @media (max-width: 768px) {
+      .hero-inner { flex-direction: column; }
+      .hero-image { max-width: 100%; }
+      .trust-inner { flex-direction: column; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <nav>
+    <a href="#hero" class="nav-logo">통인익스프레스 강남청담점</a>
+    <ul class="nav-links">
+      <li><a href="#services">서비스</a></li>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#contact">문의</a></li>
+    </ul>
+  </nav>
+
+  <!-- 히어로 -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>믿을 수 있는 이사,<br>통인익스프레스 강남청담점</h1>
+        <p>40년 경력 | 가정이사·사무실이사·보관이사 전문</p>
+        <a href="#contact" class="btn-primary">견적 문의하기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 서비스 -->
+  <section id="services">
+    <div class="section-inner">
+      <h2 class="section-title">어떤 이사든, 믿고 맡기세요</h2>
+      <p class="section-sub">고객 맞춤 이사 서비스를 제공합니다</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🏠</div>
+          <h3>가정이사</h3>
+          <p>소중한 짐을 안전하게. 꼼꼼한 포장부터 배치까지, 새 집으로의 이사를 편안하게 도와드립니다.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏢</div>
+          <h3>사무실이사</h3>
+          <p>업무 공백을 최소화한 신속한 이사. 사무기기·가구·서류까지 체계적으로 이전해 드립니다.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <h3>보관이사</h3>
+          <p>당장 옮기기 어려운 짐은 안전하게 보관해 드립니다. 필요할 때 언제든지 찾아가세요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 소개 -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="trust-inner">
+        <div class="trust-text">
+          <h2>40년간 쌓아온 믿음</h2>
+          <p>40년이 넘는 시간 동안 수많은 가정과 기업의 이사를 함께해왔습니다. 꼼꼼한 포장부터 약속된 시간 안에 안전한 배송까지, 고객의 소중한 짐과 시간을 정성껏 모십니다.</p>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">40+</div>
+              <div class="label">년 경력</div>
+            </div>
+            <div class="stat">
+              <div class="num">3가지</div>
+              <div class="label">전문 서비스</div>
+            </div>
+            <div class="stat">
+              <div class="num">24/7</div>
+              <div class="label">상담 가능</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">견적 및 문의</h2>
+      <p class="section-sub">궁금한 점이나 견적 문의를 남겨주세요. 빠르게 연락드리겠습니다.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>바로 연락하기</h3>
+          <div class="contact-item">
+            <span class="icon">📞</span>
+            <a href="tel:02-588-1234">02-588-1234</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon">✉️</span>
+            <a href="mailto:contact@tongin-cheongdam.com">contact@tongin-cheongdam.com</a>
+          </div>
+        </div>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <input type="text" name="name" placeholder="이름" required />
+          <input type="tel" name="phone" placeholder="연락처" required />
+          <select name="service">
+            <option value="">서비스 선택</option>
+            <option value="가정이사">가정이사</option>
+            <option value="사무실이사">사무실이사</option>
+            <option value="보관이사">보관이사</option>
+          </select>
+          <textarea name="message" placeholder="문의 내용을 입력해 주세요"></textarea>
+          <button type="submit" class="btn-submit">문의 보내기</button>
+        </form>
+        <div id="form-success" style="display:none; color: var(--orange); font-weight:600; font-size:1rem; line-height:1.7;">
+          문의해 주셔서 감사합니다.<br>빠른 시일 내에 확인 후 연락드리겠습니다.<br>급하신 분은 ☎ 02-588-1234로 연락 주세요.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>© 2025 통인익스프레스 강남청담점 · 📞 02-588-1234 · contact@tongin-cheongdam.com</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
